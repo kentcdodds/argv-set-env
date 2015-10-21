@@ -1,0 +1,23 @@
+sudo: false
+language: node_js
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: false
+node_js:
+  - '4'
+before_install:
+  - npm i -g npm@^3.0.0
+before_script:
+  - npm prune
+script:
+  - npm run lint
+  - npm t
+  - npm run check-coverage
+after_success:
+  - npm run report-coverage
+  - npm run semantic-release
+branches:
+  only:
+    - master

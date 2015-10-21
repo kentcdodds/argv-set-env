@@ -1,0 +1,52 @@
+{
+  "name": "argv-set-env",
+  "description": "Use in your config files to set environment variables cross-platform",
+  "main": "src/index.js",
+  "scripts": {
+    "commit": "git-cz",
+    "lint": "standard src/**/*.js",
+    "start": "npm run test:watch -s",
+    "test": "istanbul cover -x *.test.js _mocha -- -R spec src/index.test.js --compilers js:babel/register",
+    "test:watch": "mocha -R spec src/index.test.js -w --compilers js:babel/register",
+    "check-coverage": "istanbul check-coverage --lines 100 --functions 100 --branches 62",
+    "report-coverage": "cat ./coverage/lcov.info | codecov",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kentcdodds/argv-set-env.git"
+  },
+  "keywords": [
+    "set-env",
+    "environment variables",
+    "cross platform"
+  ],
+  "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kentcdodds/argv-set-env/issues"
+  },
+  "homepage": "https://github.com/kentcdodds/argv-set-env#readme",
+  "devDependencies": {
+    "babel": "5.8.23",
+    "chai": "3.3.0",
+    "codecov": "1.0.1",
+    "commitizen": "2.1.0",
+    "cz-conventional-changelog": "1.1.4",
+    "estraverse": "4.1.1",
+    "ghooks": "0.3.2",
+    "istanbul": "0.4.0",
+    "mocha": "2.3.3",
+    "semantic-release": "^4.3.5",
+    "standard": "5.3.1",
+    "validate-commit-msg": "1.0.0"
+  },
+  "czConfig": {
+    "path": "node_modules/cz-conventional-changelog"
+  },
+  "config": {
+    "ghooks": {
+      "commit-msg": "./node_modules/.bin/validate-commit-msg && npm run lint && npm t && npm run check-coverage"
+    }
+  }
+}
