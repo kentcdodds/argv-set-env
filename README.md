@@ -1,3 +1,5 @@
+You might actually want to look at my other utility [cross-env](http://npm.im/cross-env). It's probably what you're really looking for :-)
+
 # argv-set-env
 
 Status:
